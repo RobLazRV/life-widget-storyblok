@@ -4,7 +4,7 @@
     <h3 class='subtitle'>{{ subtitle }}</h3>
     <label>{{ zipCodeLabel }}</label>
     <!-- NOTE you can create a v-model in order to bind zipCode to a predetermined array/object -->
-    <input type="zipCode" v-model="this.zipCode" >
+    <input type="zipCode" v-model="zipCode" >
     <div v-if="zipCodeError" class="zipCodeError">{{zipCodeError}}</div>
 
     <label>{{ ageLabel }}</label>
@@ -34,13 +34,20 @@
 </template>
 
 <script>
+  // let zipCode = '';
+  // let selectedAgeOption ="";
+  // let selectedCoverageAmount ="";
+  // let selectedPolicyType = "";
+  // let zipCodeError = "";
 export default {
   data(){
-    let zipCode = this.zipCode;
-    let selectedAgeOption ="";
-    let selectedCoverageAmount ="";
-    let selectedPolicyType = "";
-    let zipCodeError = "";
+    return {
+      zipCode:'',
+      selectedPolicyType:'',
+      selectedCoverageAmount:'',
+      selectedAgeOption:'',
+      zipCodeError:''
+    }
   },
   props: {
     title: {
@@ -86,16 +93,16 @@ export default {
   },
   methods: {
     handleSubmit() {
-      zipCodeError = this.zipCode.length === 5 ? '' : 'Zip code must be 5 digits';
+      this.zipCodeError = this.zipCode.length === 5 ? '' : 'Zip code must be 5 digits';
       if(!this.zipCodeError){
-        console.log(zipCode);
-        console.log(this.ageOptions);
-        console.log(this.coverageAmounts);
-        console.log(this.policyTypes);
-        zipCode = "";
-        this.ageOptions = '';
-        this.coverageAmounts = ""
-        this.policyTypes = "";
+        console.log(this.zipCode);
+        console.log(this.selectedAgeOption);
+        console.log(this.selectedCoverageAmount);
+        console.log(this.selectedPolicyType);
+        this.zipCode = "";
+        this.selectedAgeOption = '';
+        this.selectedCoverageAmount = ""
+        this.selectedPolicyType = "";
       }
     }
   }
