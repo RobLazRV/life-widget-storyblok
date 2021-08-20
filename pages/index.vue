@@ -1,32 +1,34 @@
 <template>
-<section >
-  <h1>Home Page!</h1>
-  <!-- NOTE COMMENT THE lifeWidget in order to see the res and thus be able to configure -->
-  <lifeWidget
-  :title='widget.title'
-  :subtitle="widget.subtitle"
-  :zipCodeLabel='widget.zipCodeLabel'
-  :ageLabel="widget.ageLabel"
-  :ageOptions="widget.ageOptions"
-  :coverageAmountLabel="widget.coverageAmountLabel"
-  :coverageAmounts="widget.coverageAmounts"
-  :policyTypeLabel="widget.policyTypeLabel"
-  :policyTypes="widget.policyTypes"
-  :butCTA="widget.butCTA"
-  />
-</section>
-
+  <div >
+    <section >
+      <h1>Home Page!</h1>
+      <lifeWidget
+      :title='widget.title'
+      :subtitle="widget.subtitle"
+      :zipCodeLabel='widget.zipCodeLabel'
+      :ageLabel="widget.ageLabel"
+      :ageOptions="widget.ageOptions"
+      :coverageAmountLabel="widget.coverageAmountLabel"
+      :coverageAmounts="widget.coverageAmounts"
+      :policyTypeLabel="widget.policyTypeLabel"
+      :policyTypes="widget.policyTypes"
+      :butCTA="widget.butCTA"
+      />
+    </section>
+    <script src="//app.storyblok.com/f/storyblok-v2-latest.js" type="text/javascript">
+</script>
+  </div>
 </template> 
  
 <script>
-// import lifeWidget from '../components/lifeWidget';
-// NOTE no need to import 
+
+
+
 export default {
 
   asyncData(context) {
     return context.app.$storyapi.get('cdn/stories', {
       version:'draft',
-      // NOTE this a filter param offered by Storyblok
       starts_with: 'insurance-widget/'
     }).then(res => {
       console.log('Response:',res)
@@ -45,34 +47,21 @@ export default {
           butCTA: lw.content.butCTA, 
         }
       })
-      console.log(widget)
+      
       return {
+        
         widget: widget[0]
       }
-      
     })
   },
-  // methods: {
-  //   handleSubmit() {
-  //     this.zipCodeError = this.zipCode.length === 5 ? '' : 'Zip code must be 5 digits';
-  //     if(!this.zipCodeError){
-  //       console.log(this.zipCode);
-  //       console.log(this.ageOptions);
-  //       console.log(this.coverageAmounts);
-  //       console.log(this.policyTypes);
-  //       this.zipCode = "";
-  //       this.ageOptions = '';
-  //       this.coverageAmounts = ""
-  //       this.policyTypes = "";
-  //     }
-  //   }
-  // }
 }
-
 </script>
 
 
 <style>
+  body{
+    background: grey;
+  }
   form {
     border-bottom: solid 5px #0157ff;
     max-width: 420px;

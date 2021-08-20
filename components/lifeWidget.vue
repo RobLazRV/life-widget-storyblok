@@ -3,7 +3,6 @@
     <h1 class="title">{{ title }}</h1>
     <h3 class='subtitle'>{{ subtitle }}</h3>
     <label>{{ zipCodeLabel }}</label>
-    <!-- NOTE you can create a v-model in order to bind zipCode to a predetermined array/object -->
     <input type="zipCode" v-model="zipCode" >
     <div v-if="zipCodeError" class="zipCodeError">{{zipCodeError}}</div>
 
@@ -25,20 +24,11 @@
       <button>
         {{ butCTA }}
       </button>
-       <!-- <p>Age Option: {{ selectedAgeOption }}</p>
-       <p>C A: {{ selectedCoverageAmount }}</p>
-       <p>P T: {{ selectedPolicyType }}</p> -->
-       <!-- <p>Zip: {{ zipCode }}</p> -->
     </div>
   </form>
 </template>
 
 <script>
-  // let zipCode = '';
-  // let selectedAgeOption ="";
-  // let selectedCoverageAmount ="";
-  // let selectedPolicyType = "";
-  // let zipCodeError = "";
 export default {
   data(){
     return {
